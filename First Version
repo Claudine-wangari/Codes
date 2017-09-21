@@ -22,18 +22,16 @@ type.php
 
 ***Database with the tables
 -----------------------------------------------------------------------------------------------------------------------------
--- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+---- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2017 at 10:59 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.0.22
+-- Generation Time: Sep 21, 2017 at 10:58 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -51,10 +49,10 @@ USE `blooddonationsystem`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrator`
+-- Table structure for table `administrators`
 --
 
-CREATE TABLE `administrator` (
+CREATE TABLE `administrators` (
   `user_type` varchar(255) NOT NULL,
   `FirstName` varchar(55) NOT NULL,
   `LastName` varchar(55) NOT NULL,
@@ -87,6 +85,7 @@ CREATE TABLE `bloodbank` (
 --
 
 CREATE TABLE `donor` (
+  `user_type` varchar(255) NOT NULL,
   `FirstName` varchar(55) NOT NULL,
   `LastName` varchar(55) NOT NULL,
   `NationalID` int(15) NOT NULL,
@@ -97,6 +96,13 @@ CREATE TABLE `donor` (
   `PhoneNumber` int(12) NOT NULL,
   `Age` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `donor`
+--
+
+INSERT INTO `donor` (`user_type`, `FirstName`, `LastName`, `NationalID`, `Password`, `BloodType`, `RhesusType`, `EmailAddress`, `PhoneNumber`, `Age`) VALUES
+('Donor', 'Claudine', 'Gachiri', 4444907, '1234', 'A', 'Positive', 'qwerty@gmail.com', 700004231, 20);
 
 -- --------------------------------------------------------
 
@@ -122,13 +128,6 @@ CREATE TABLE `recipients` (
 --
 
 --
--- Indexes for table `administrator`
---
-ALTER TABLE `administrator`
-  ADD PRIMARY KEY (`StaffID`),
-  ADD UNIQUE KEY `Password` (`Password`);
-
---
 -- Indexes for table `bloodbank`
 --
 ALTER TABLE `bloodbank`
@@ -148,11 +147,11 @@ ALTER TABLE `donor`
 ALTER TABLE `recipients`
   ADD PRIMARY KEY (`NationalID`),
   ADD UNIQUE KEY `Password` (`Password`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
 -----------------------------------------------------------------------------------------------------------------------------
 
